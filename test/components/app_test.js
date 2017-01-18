@@ -15,6 +15,11 @@ import App from '../../src/components/app'
 // when we run our test so when the tests run and they execute (pass or fail),
 // we gonna get a report back from our testing setup, and it gonna say [assed or failed.
 describe('App', ()=>{
+  let component;
+  beforeEach(()=>{
+    component = renderComponent(App)
+  })
+
   // use 'it' to test a single attribute of a target
   // to use 'it' to group one single test
   // the string is only used for the report that gets generated when we run our test
@@ -22,10 +27,15 @@ describe('App', ()=>{
   it('shows the correct text', ()=>{
 
     // create an instance of App
-    const component = renderComponent(App)
+    // const component = renderComponent(App)
 
     // use 'expect' to make an assertion about a target
     expect(component).to.contain("React simple starter")
+  })
+
+  it('shows a comment box', ()=>{
+    // expect(component.find("CommentBox")).to.exist  不是这样写，因为这个组件标签不是jq选择器
+    expect(component.find(".comment-box")).to.exist
   })
 
 })
