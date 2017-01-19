@@ -10,17 +10,34 @@ class CommentBox extends Component{
   constructor(props){
     super(props)
   }
-  onInputChange(value){
-    inputChange(value)
+  onInputChange(event){ // ！！！这里是event handler，直接可以传入event！！！
+    this.props.inputChange(event.target.value)
   }
-  onSubmitClicked(value){
-    createPost(value)
+  onSubmitClicked(){
+    if (!this.props.value){
+      return;
+    }
+    this.props.createPost(this.props.value, (new Date()).toString())
+    this.props.inputChange('')
+  }
+  renderComments(){
+    if(!this.props.comments){
+      return
+    }
+    return this.props.comments.map((comment)=>{
+      return (
+        <li key={Math.random()}>{comment}</li>
+      )
+    })
   }
   render(){
     return (
       <div className="comment-box">
-        <textarea onChange={(event)=>{this.onInputChange(event.target.value)}}/>
-        <button className="btn btn-success" onSubmit={this.onSubmitClicked(this.props.value)}>Submit</button>
+        <textarea value={this.props.value} onChange={this.onInputChange.bind(this)}/> {/* event handler的写法！！！onChange={this.onInputChange.bind(this)}！！！*/}
+        <button className="btn btn-success" onClick={this.onSubmitClicked.bind(this)}>Submit</button>
+        <ul>
+          {this.renderComments()}
+        </ul>
       </div>
     )
   }
@@ -29,11 +46,14 @@ class CommentBox extends Component{
 
 function mapStateToProps(state) {
   return {
-    value: state.comments.value
+    value: state.comments.value,
+    comments: state.comments.comment,
+    key: state.comments.key
   }
 }
 
 function mapDispatchToProps(dispatch) {
+  // bind之后的action就绑定在了！！！this.props上！！！只能通过this.props.调用！！！
   return bindActionCreators({createPost, inputChange}, dispatch)
 }
 
