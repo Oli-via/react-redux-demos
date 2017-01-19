@@ -27,6 +27,7 @@ class CommentBox extends Component{
     }
     return this.props.comments.map((comment)=>{
       return (
+        // 也可以把这个li作为CommentList component
         <li key={Math.random()}>{comment}</li>
       )
     })
@@ -37,7 +38,7 @@ class CommentBox extends Component{
         <textarea value={this.props.value} onChange={this.onInputChange.bind(this)}/> {/* event handler的写法！！！onChange={this.onInputChange.bind(this)}！！！*/}
         {/* 外层是form表单，里面的button点击就是提交表单。 */}
         <button className="btn btn-success">Submit</button>
-        <ul>
+        <ul className="comment-list" >
           {this.renderComments()}
         </ul>
       </form>
