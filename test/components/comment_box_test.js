@@ -27,13 +27,15 @@ describe('CommentBox', ()=>{
   });
 
   describe('entering some text', ()=>{
-    beforeEach(()=>{
-      // .simulate意思是：im going to simulate an event, which is a 'change' event, 'new comment' is the new value come from the 'change' event
-      component.find('textarea').simulate('change', 'new comment');
-    });
 
     it('shows that text in the textarea', ()=>{
-      expect(component.find('textarea')).to.have.value('new comment')
-    })
+      // .simulate意思是：im going to simulate an event, which is a 'change' event, 'new comment' is the new value come from the 'change' event
+      component.find('textarea').simulate('change', 'new comment');
+      expect(component.find('textarea')).to.have.value('new comment');
+    });
+    it('when submitted, clears the input', ()=>{
+      component.simulate("submit");
+      expect(component.find('textarea')).to.have.value('');
+    });
   })
-} )
+})

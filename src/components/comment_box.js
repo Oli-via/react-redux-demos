@@ -13,7 +13,8 @@ class CommentBox extends Component{
   onInputChange(event){ // ！！！这里是event handler，直接可以传入event！！！
     this.props.inputChange(event.target.value)
   }
-  onSubmitClicked(){
+  handleSubmit(event){
+    event.preventDefault();
     if (!this.props.value){
       return;
     }
@@ -32,13 +33,14 @@ class CommentBox extends Component{
   }
   render(){
     return (
-      <div className="comment-box">
+      <form onSubmit={this.handleSubmit.bind(this)} className="comment-box">
         <textarea value={this.props.value} onChange={this.onInputChange.bind(this)}/> {/* event handler的写法！！！onChange={this.onInputChange.bind(this)}！！！*/}
-        <button className="btn btn-success" onClick={this.onSubmitClicked.bind(this)}>Submit</button>
+        {/* 外层是form表单，里面的button点击就是提交表单。 */}
+        <button className="btn btn-success">Submit</button>
         <ul>
           {this.renderComments()}
         </ul>
-      </div>
+      </form>
     )
   }
 }
