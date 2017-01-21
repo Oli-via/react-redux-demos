@@ -23,7 +23,10 @@ class CommentArea extends Component{
   render(){
     return (
       <form onSubmit={this.handleSubmit.bind(this)} className="comment-box">
-        <textarea value={this.props.value} onChange={this.onInputChange.bind(this)}/> {/* event handler的写法！！！onChange={this.onInputChange.bind(this)}！！！*/}
+        <h4>Add a comment</h4>
+        <div>
+          <textarea value={this.props.value} onChange={this.onInputChange.bind(this)}/> {/* event handler的写法！！！onChange={this.onInputChange.bind(this)}！！！*/}
+        </div>
         {/* 外层是form表单，里面的button点击就是提交表单。 */}
         <button className="btn btn-success">Submit</button>
       </form>
