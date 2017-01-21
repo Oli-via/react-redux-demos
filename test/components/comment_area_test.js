@@ -2,27 +2,27 @@
  * Created by aliyy on 2017/1/18.
  */
 import {renderComponent, expect} from '../test_helper'
-import CommentBox from '../../src/containers/comment_area'
+import CommentArea from '../../src/containers/comment_area'
 
-describe('CommentBox', ()=>{
+describe('CommentArea', ()=>{
   let component;
 
   beforeEach(()=>{
-    component = renderComponent(CommentBox)
+    component = renderComponent(CommentArea)
   })
 
   it('has a text area', ()=>{
-    // const component = renderComponent(CommentBox)
+    // const component = renderComponent(CommentArea)
     expect(component.find('textarea')).to.exist;
   });
 
   it('has a button', ()=>{
-    // const component = renderComponent(CommentBox)
+    // const component = renderComponent(CommentArea)
     expect(component.find("button")).to.exist;
   });
 
   it('has a correct class', ()=>{
-    // const component = renderComponent(CommentBox)
+    // const component = renderComponent(CommentArea)
     expect(component).to.have.class("comment-box");  //to.have.class的expect里只能是component，不能是component.find("div")
   });
 
