@@ -26,7 +26,7 @@ class CommentList extends Component{
 }
 function mapStateToProps(state) {
   return {
-    comments: state.comments.comment
+    comments: state.comments
   }
 }
 

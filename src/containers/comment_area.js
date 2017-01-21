@@ -34,7 +34,7 @@ class CommentArea extends Component{
 
 function mapStateToProps(state) {
   return {
-    value: state.comments.value,
+    value: state.value,
   }
 }
 /*
