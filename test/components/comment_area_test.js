@@ -2,7 +2,7 @@
  * Created by aliyy on 2017/1/18.
  */
 import {renderComponent, expect} from '../test_helper'
-import CommentBox from '../../src/components/comment_box'
+import CommentBox from '../../src/containers/comment_area'
 
 describe('CommentBox', ()=>{
   let component;
