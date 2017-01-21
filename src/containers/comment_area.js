@@ -2,9 +2,11 @@
  * Created by aliyy on 2017/1/18.
  */
 import React, {Component} from 'react'
-import {createPost, inputChange} from '../actions/index'
+// import {createPost, inputChange} from '../actions/index'
+// import {bindActionCreators} from 'redux'
+// actions引入的简单写法：
+import * as actions from '../actions/index'
 import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux'
 
 class CommentArea extends Component{
   onInputChange(event){ // ！！！这里是event handler，直接可以传入event！！！
@@ -35,10 +37,11 @@ function mapStateToProps(state) {
     value: state.comments.value,
   }
 }
-
+/*
 function mapDispatchToProps(dispatch) {
   // bind之后的action就绑定在了！！！this.props上！！！只能通过this.props.调用！！！
   return bindActionCreators({createPost, inputChange}, dispatch)
-}
+}*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(CommentArea)
+// 使用简单的绑定actions写法，可以直接写成如下方式：
+export default connect(mapStateToProps, actions)(CommentArea)
