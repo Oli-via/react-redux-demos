@@ -14,8 +14,8 @@ class UserList extends Component {
     return this.props.users.map((user)=>{
       return (
         <div className="card" key={user.name}>
-          <h4 className="card-title">{user.name}</h4>
-          <p className="card-text">Cheese Factory</p>
+          <h4>{user.name}</h4>
+          <p>Cheese Factory</p>
           <a className="btn btn-primary">Email</a>
         </div>
       )
