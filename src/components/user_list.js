@@ -15,8 +15,8 @@ class UserList extends Component {
       return (
         <div className="card" key={user.name}>
           <h4>{user.name}</h4>
-          <p>Cheese Factory</p>
-          <a className="btn btn-primary">Email</a>
+          <p>{user.company.name}</p>
+          <a className="btn btn-primary" href={user.website}>Website</a>
         </div>
       )
     })
