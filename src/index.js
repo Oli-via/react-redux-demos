@@ -17,6 +17,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path='/' component={App}>
         <Route path='signin' component={SignIn} />
+        <Route path='feature' component={SignIn} />
       </Route>
     </Router>
   </Provider>
