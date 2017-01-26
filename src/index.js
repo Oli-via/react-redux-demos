@@ -8,8 +8,9 @@ import reducers from './reducers';
 
 import SignIn from './components/auth/signin';
 import { Router, Route, browserHistory } from 'react-router';
+import reduxThunk from 'redux-thunk';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
