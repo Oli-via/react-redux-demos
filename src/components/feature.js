@@ -2,13 +2,25 @@
  * Created by aliyy on 2017/1/27.
  */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchMessage } from '../actions';
 
-export default class Feature extends Component {
+
+class Feature extends Component {
+  componentWillMount(){
+    this.props.fetchMessage();
+  }
   render(){
     return(
       <div>
-        <h3>Special Feature for you!</h3>
+        <h3>{this.props.message}</h3>
       </div>
     )
   }
 }
+
+function mapStateToProps(state) {
+  return { message: state.authUser.message }
+}
+
+export default connect(mapStateToProps, { fetchMessage })(Feature)

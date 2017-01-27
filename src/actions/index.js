@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../actions/type';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FETCH_MESSAGE } from '../actions/type';
 import { browserHistory } from 'react-router';
 
 const ROOT_URL = 'http://localhost:3090';
@@ -57,6 +57,19 @@ export function signUp({ email, password }) {
       .catch((err)=>{
         dispatch(authError(err.response.data.error));
       })
+  }
+};
+export function fetchMessage() {
+  return function (dispatch) {
+    axios.get(ROOT_URL, {
+      headers: { authorization: localStorage.getItem('token')}
+    })
+      .then(responds=> {
+        dispatch({
+          type: FETCH_MESSAGE,
+          payload: responds.data.message
+        });
+      });
   }
 };
 
