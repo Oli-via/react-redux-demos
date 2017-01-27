@@ -47,7 +47,6 @@ export function signUp({ email, password }) {
   return function (dispatch) {
     axios.post(`${ROOT_URL}/signup`, { email, password })
       .then(responds=>{
-        console.log(responds.data);
         const token = responds.data.token;
         if (token) {
           dispatch({ type: AUTH_USER });
@@ -60,3 +59,9 @@ export function signUp({ email, password }) {
       })
   }
 };
+
+export function authUser() {
+  return {
+    type: AUTH_USER
+  }
+}
