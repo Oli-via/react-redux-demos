@@ -62,6 +62,7 @@ export function signUp({ email, password }) {
 export function fetchMessage() {
   return function (dispatch) {
     axios.get(ROOT_URL, {
+      // 要加s，headers
       headers: { authorization: localStorage.getItem('token')}
     })
       .then(responds=> {
