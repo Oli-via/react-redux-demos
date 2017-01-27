@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { signInUser } from '../../actions';
 import { connect } from 'react-redux';
-import Error from './error';
+import Error from '../error';
 
 class SignIn extends Component{
   submitForm({ email, password }){

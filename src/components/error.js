@@ -5,7 +5,10 @@ class Error extends Component {
   render(){
     if (this.props.error){
       return (
-        <div className="alert alert-danger">{this.props.error}</div>
+        <div className="alert alert-danger">
+          <strong>Oops! </strong>
+          {this.props.error}
+        </div>
       )
     }
     return <div></div>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR} from '../actions/type';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../actions/type';
 import { browserHistory } from 'react-router';
 
 const ROOT_URL = 'http://localhost:3090';
@@ -35,5 +35,11 @@ export function authError(error) {
   return {
     type: AUTH_ERROR,
     payload: error
+  }
+}
+export function signOut() {
+  localStorage.removeItem('token');
+  return {
+    type: UNAUTH_USER
   }
 }
