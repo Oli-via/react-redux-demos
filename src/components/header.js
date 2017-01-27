@@ -7,16 +7,11 @@ import { Link } from 'react-router';
 import { authUser} from '../actions';
 
 class Header extends Component {
-  componentWillMount(){
-    if ( localStorage.getItem('token') && !this.props.authenticated ) {
-      this.props.authUser();
-    }
-  }
   renderLinks(){
     if (this.props.authenticated) {
       return ([
-        <li className="navbar-link"><Link to="/signout" key={3}>Sign Out</Link></li>,
-        <li className="navbar-link"><Link to="/feature" key={4}>Feature</Link></li>
+        <li className="navbar-link" key={3}><Link to="/signout">Sign Out</Link></li>,
+        <li className="navbar-link" key={4}><Link to="/feature">Feature</Link></li>
       ])
     }
     return [
@@ -27,7 +22,7 @@ class Header extends Component {
   render(){
     return(
       <div>
-        <h3><Link to="/" className="navbar-link" key={5}>Redux Auth</Link></h3>
+        <h3><Link to="/" className="navbar-link">Redux Auth</Link></h3>
         {this.renderLinks()}
 
       </div>
