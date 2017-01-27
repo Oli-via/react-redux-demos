@@ -43,3 +43,20 @@ export function signOut() {
     type: UNAUTH_USER
   }
 }
+export function signUp({ email, password }) {
+  return function (dispatch) {
+    axios.post(`${ROOT_URL}/signup`, { email, password })
+      .then(responds=>{
+        console.log(responds.data);
+        const token = responds.data.token;
+        if (token) {
+          dispatch({ type: AUTH_USER });
+          localStorage.setItem("token", token);
+          browserHistory.push('/feature');
+        }
+      })
+      .catch((err)=>{
+        dispatch(authError(err.response.data.error));
+      })
+  }
+};
